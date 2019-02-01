@@ -1,4 +1,4 @@
-*Security Notice:* DO NOT PUSH THIS PROJECT TO PUBLIC WEB! THIS README HAS THE TOKENS!
+*Security Notice:* Security tokens are committed, but the server and the bot will be deleted by the end of the day!
 
 # Usage
 - `source ~/w/.virtualenvs/pedy/bin/activate`
