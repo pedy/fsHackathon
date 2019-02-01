@@ -1,5 +1,7 @@
 *Security Notice:* DO NOT PUSH THIS PROJECT TO PUBLIC WEB! THIS README HAS THE TOKENS!
 
+This has been initiated using this tutorial: https://www.devdungeon.com/content/make-discord-bot-python
+
 Server: FSHCK
 
 Client ID: 540773320724054024
@@ -23,3 +25,4 @@ PedyBox#0865
 # PIP install
 discord.py==0.16.12
 websocket-client
+
