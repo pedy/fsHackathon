@@ -1,4 +1,5 @@
 import discord
+import time
 import json
 from difflib import SequenceMatcher
 import random
@@ -36,16 +37,20 @@ async def on_message(message):
 
     closest = return_most_similar(message.content.upper())
 
-    if closest != message.content.upper():
-        result = "The most similar valid pair to your input is \""\
-                + closest + "\". The rate is: "
-    else:
-        result = message.content.upper() + " exchange rate is: "
+    i = 5
+    while i>0:
+        if closest != message.content.upper():
+            result = "\nThe most similar valid pair to your input is \""\
+                    + closest + "\". The rate is: "
+        else:
+            result = message.content.upper() + " exchange rate is: "
 
-    with open('sampleRates.json') as json_data:
-        d = json.load(json_data)
-        result += str(random.choice(d['exchangeRates'][closest])) # 'choice' randomly selects a value from the list
-        await client.send_message(message.channel, result)
+        with open('sampleRates.json') as json_data:
+            d = json.load(json_data)
+            result += str(random.choice(d['exchangeRates'][closest])) # 'choice' randomly selects a value from the list
+            await client.send_message(message.channel, result)
+        time.sleep(1)
+        i = i-1
 
 @client.event
 async def on_ready():
