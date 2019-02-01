@@ -24,8 +24,26 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    result = return_most_similar(message.content.upper())
-    await client.send_message(message.channel, result)
+    if message.content.lower in ['hi', 'hello', 'hello!', 'hi!', 'start', 'begin', 'help' ]:
+        with open('sampleRates.json') as json_data:
+            d = json.load(json_data)
+            welcome_msg = "Hi,\nThe valid currency symbols are:\n"\
+                        + d['validCurrencySymbols']\
+                        + "\nPlease input a pair like \"AUD GBR\" (no quotation marks in your input) ..."
+            await client.send_message(message.channel, welcome_msg)
+
+    closest = return_most_similar(message.content.upper())
+
+    if closest != message.content.upper():
+        result = "The most similar valid pair to your input is \""\
+                + closest + "\". The rate is: "
+    else:
+        result = message.content.upper() + " exchange rate is: "
+
+    with open('sampleRates.json') as json_data:
+        d = json.load(json_data)
+        result += str(d['exchangeRates'][closest])
+        await client.send_message(message.channel, result)
 
 @client.event
 async def on_ready():
