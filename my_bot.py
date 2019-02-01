@@ -24,13 +24,14 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.lower in ['hi', 'hello', 'hello!', 'hi!', 'start', 'begin', 'help' ]:
+    if message.content.lower() in ['hi', 'hello', 'hello!', 'hi!', 'start', 'begin', 'help' ]:
         with open('sampleRates.json') as json_data:
             d = json.load(json_data)
             welcome_msg = "Hi,\nThe valid currency symbols are:\n"\
-                        + d['validCurrencySymbols']\
+                        + str(d['validCurrencySymbols'])\
                         + "\nPlease input a pair like \"AUD GBR\" (no quotation marks in your input) ..."
             await client.send_message(message.channel, welcome_msg)
+            return
 
     closest = return_most_similar(message.content.upper())
 
