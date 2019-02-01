@@ -18,3 +18,8 @@ pedy#4187
 
 bot username
 PedyBox#0865
+
+
+# PIP install
+discord.py==0.16.12
+websocket-client
