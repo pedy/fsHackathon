@@ -1,6 +1,7 @@
 import discord
 import json
 from difflib import SequenceMatcher
+import random
 
 def return_most_similar(inputStr):
     with open('sampleRates.json') as json_data:
@@ -43,7 +44,7 @@ async def on_message(message):
 
     with open('sampleRates.json') as json_data:
         d = json.load(json_data)
-        result += str(d['exchangeRates'][closest])
+        result += str(random.choice(d['exchangeRates'][closest])) # 'choice' randomly selects a value from the list
         await client.send_message(message.channel, result)
 
 @client.event
