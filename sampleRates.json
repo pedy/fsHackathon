@@ -1,0 +1,15 @@
+{
+    "validCurrencySymbols":
+    [
+        "AUD", "USD", "GBR"
+    ],
+    "exchangeRates":
+    {
+        "AUDUSD": 2.3,
+        "USDAUD": 0.43,
+        "GBRAUD": 3.5,
+        "AUDGBR": 0.28,
+        "GBRUSD": 0.8,
+        "USDGBR": 1.25
+    }
+}
